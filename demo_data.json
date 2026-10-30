@@ -1,0 +1,235 @@
+{
+  "scenarios": [
+    {
+      "id": "g1",
+      "title": "Ghibli Pyramid",
+      "author": "fatBatman",
+      "prompt": "A breathtaking Studio Ghibli style 2D animation scene: a lone ancient stone pyramid rises from a vast green meadow under a brilliant blue sky filled with towering white cumulus clouds. Hand-painted watercolor textures, warm sunlight, tall grass swaying gently in the wind, small white birds circling the pyramid. Gentle color palette of sky blue, warm ochre and soft green. Slow camera push-in toward the pyramid.",
+      "entities": [
+        {
+          "text": "ancient stone pyramid",
+          "type": "subject",
+          "candidates": [
+            "weathered wooden windmill",
+            "moss-covered stone cottage",
+            "rusted iron water tower",
+            "overgrown stone archway"
+          ]
+        },
+        {
+          "text": "vast green meadow",
+          "type": "scene",
+          "candidates": [
+            "rolling golden prairie",
+            "calm sapphire lake",
+            "dense emerald forest",
+            "wide ochre desert"
+          ]
+        },
+        {
+          "text": "Studio Ghibli style 2D animation",
+          "type": "style",
+          "candidates": [
+            "Cartoon Saloon style 2D animation",
+            "Studio Trigger style 2D animation",
+            "Aardman feature style 2D animation",
+            "Disney renaissance style 2D animation"
+          ]
+        },
+        {
+          "text": "Hand-painted watercolor textures",
+          "type": "style",
+          "candidates": [
+            "Digitally cel-shaded line art",
+            "Soft pastel chalk textures",
+            "Bold ink outline textures",
+            "Smooth vector gradient textures"
+          ]
+        },
+        {
+          "text": "towering white cumulus clouds",
+          "type": "element",
+          "candidates": [
+            "wispy pale cirrus streaks",
+            "drifting gray nimbus banks",
+            "fluffy pink altocumulus formations",
+            "dense dark stratus layers"
+          ]
+        },
+        {
+          "text": "warm sunlight",
+          "type": "element",
+          "candidates": [
+            "cool moonlight",
+            "soft starlight",
+            "dappled shade",
+            "crisp daylight"
+          ]
+        }
+      ],
+      "frameOrig": "assets/preview/p_v1_ghibli.jpg",
+      "frameMod": "assets/preview/p_v1_mod.jpg",
+      "videoOrig": "assets/videos/v1_ghibli.mp4",
+      "videoMod": "assets/videos/v1_mod.mp4",
+      "preset": {
+        "ancient stone pyramid": "giant floating crystal island",
+        "vast green meadow": "vast golden wheat field",
+        "Studio Ghibli style 2D animation": "Makoto Shinkai style 2D animation"
+      }
+    },
+    {
+      "id": "g2",
+      "title": "Genshin Bread Squad",
+      "author": "PNUT",
+      "prompt": "Genshin Impact style anime scene: a squad of tiny chibi soldiers in blue uniforms marches across the surface of a giant slice of toasted bread, using a breadcrumb as a bridge. Warm golden crust texture beneath their boots, scattered sesame seeds as boulders, soft anime cel-shading with vibrant saturation, dynamic low-angle camera tracking alongside the marching soldiers. Bright morning light, shallow depth of field.",
+      "entities": [
+        {
+          "text": "tiny chibi soldiers",
+          "type": "subject",
+          "candidates": [
+            "tiny chibi warriors",
+            "tiny chibi artisans",
+            "tiny chibi painters",
+            "tiny chibi scholars"
+          ]
+        },
+        {
+          "text": "giant slice of toasted bread",
+          "type": "scene",
+          "candidates": [
+            "giant wedge of crunchy bacon",
+            "giant block of velvety melon",
+            "giant patty of grilled onion",
+            "giant chunk of roasted apple"
+          ]
+        },
+        {
+          "text": "Bright morning light",
+          "type": "scene",
+          "candidates": [
+            "Golden evening light",
+            "Silver moonlit light",
+            "Bright sunrise light",
+            "Cloudy daytime light"
+          ]
+        },
+        {
+          "text": "blue uniforms",
+          "type": "color",
+          "candidates": [
+            "navy uniforms",
+            "teal uniforms",
+            "plum uniforms",
+            "rose uniforms"
+          ]
+        },
+        {
+          "text": "Genshin Impact style",
+          "type": "style",
+          "candidates": [
+            "Honkai Impact style",
+            "Arknights game style",
+            "Azur Lane game style",
+            "Mihoyo official style"
+          ]
+        },
+        {
+          "text": "soft anime cel-shading with vibrant saturation",
+          "type": "style",
+          "candidates": [
+            "bold anime linework with rich contrast",
+            "soft anime watercolor with muted tones",
+            "crisp anime painterly with warm hues",
+            "smooth anime vector with bright tones"
+          ]
+        }
+      ],
+      "frameOrig": "assets/preview/p_v2_orig.jpg",
+      "frameMod": "assets/preview/p_v2_mod.jpg",
+      "videoOrig": "assets/videos/v2_orig.mp4",
+      "videoMod": "assets/videos/v2_mod.mp4",
+      "preset": {
+        "tiny chibi soldiers": "tiny chibi chefs",
+        "blue uniforms": "red uniforms",
+        "giant slice of toasted bread": "giant strawberry cake"
+      }
+    },
+    {
+      "id": "g3",
+      "title": "Dreamy Crystal",
+      "author": "nothisispatrick",
+      "prompt": "A dreamy crystal world: translucent crystal formations in lavender and pale pink glow gently in slow motion, tiny light particles drifting between the facets, iridescent reflections shifting as the camera slowly orbits. Ethereal atmosphere, soft fog, cinematic depth, pastel palette.",
+      "entities": [
+        {
+          "text": "translucent crystal formations",
+          "type": "subject",
+          "candidates": [
+            "translucent jellyfish colonies",
+            "translucent seaglass clusters",
+            "translucent petal arrangements",
+            "translucent soap bubble orbs"
+          ]
+        },
+        {
+          "text": "dreamy crystal world",
+          "type": "scene",
+          "candidates": [
+            "serene forest valley",
+            "whimsical cloud glen",
+            "tranquil ocean depths",
+            "magical meadow realm"
+          ]
+        },
+        {
+          "text": "lavender and pale pink",
+          "type": "color",
+          "candidates": [
+            "peach and soft cream",
+            "butter and pale yellow",
+            "periwinkle and soft blue",
+            "lilac and pale blush"
+          ]
+        },
+        {
+          "text": "pastel palette",
+          "type": "style",
+          "candidates": [
+            "muted palette",
+            "neon palette",
+            "mono palette",
+            "sunset palette"
+          ]
+        },
+        {
+          "text": "tiny light particles",
+          "type": "element",
+          "candidates": [
+            "floating dandelion seeds",
+            "drifting dewdrop specks",
+            "faint stardust flecks",
+            "soft petal fragments"
+          ]
+        },
+        {
+          "text": "iridescent reflections",
+          "type": "element",
+          "candidates": [
+            "shimmering sheens",
+            "glowing halos",
+            "prismatic streaks",
+            "diffused glows"
+          ]
+        }
+      ],
+      "frameOrig": "assets/preview/p_v3_orig.jpg",
+      "frameMod": "assets/preview/p_v3_mod.jpg",
+      "videoOrig": "assets/videos/v3_orig.mp4",
+      "videoMod": "assets/videos/v3_mod.mp4",
+      "preset": {
+        "translucent crystal formations": "translucent jelly formations",
+        "lavender and pale pink": "teal and mint green",
+        "tiny light particles": "floating bubbles"
+      }
+    }
+  ]
+}
