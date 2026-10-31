@@ -1389,8 +1389,16 @@ function primeVideo(v){
   };
   if(v.readyState >= 2) tryPlay();
   else v.addEventListener('canplay', tryPlay, { once:true });
+  // 微信内置浏览器：需要在 WeixinJSBridgeReady 后手动播一次
+  if(window.WeixinJSBridge && window.WeixinJSBridge.invoke){
+    window.WeixinJSBridge.invoke('getNetworkType', {}, tryPlay);
+  }
   return v;
 }
+
+document.addEventListener('WeixinJSBridgeReady', function(){
+  document.querySelectorAll('video').forEach(primeVideo);
+}, false);
 
 /* 用户任何一次点击/触摸，把当前页面上暂停的视频全部唤醒 */
 ['click','touchstart'].forEach(function(ev){
