@@ -409,6 +409,22 @@ body{
   box-shadow:0 8px 28px rgba(0,0,0,.5);
 }
 .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+/* 公安备案 */
+.beian-mps{
+  position:fixed;left:0;right:0;bottom:0;z-index:900;
+  display:flex;justify-content:center;align-items:center;gap:6px;
+  padding:7px 12px;font-size:12px;letter-spacing:.2px;
+  color:#8a949e;background:rgba(10,12,14,.92);backdrop-filter:blur(8px);
+  border-top:1px solid rgba(255,255,255,.06);
+}
+.beian-mps a{color:#8a949e;text-decoration:none;display:flex;align-items:center;gap:6px}
+.beian-mps a:hover{color:#8BFF43}
+.beian-mps .ico{width:14px;height:16px;flex:none;display:inline-block;
+  background:linear-gradient(180deg,#3a4a5a,#1c2530);border-radius:2px;
+  position:relative}
+.beian-mps .ico::after{content:'盾';position:absolute;inset:0;font-size:9px;
+  color:#cfe3f5;display:grid;place-items:center}
+body{padding-bottom:38px}
 .note{max-width:330px;color:#9aa3ad;font-size:13px;line-height:1.8}
 .note h2{color:#fff;font-size:18px;margin-bottom:12px;font-weight:700}
 .note .k{color:var(--green);font-weight:600}
@@ -1356,5 +1372,11 @@ function _playResult(){
   loadDemo();
 })();
 </script>
+<div class="beian-mps">
+  <a href="https://beian.mps.gov.cn/#/query/webSearch?code=6cc0359398f5bdad51e9c38345584c16" target="_blank" rel="noreferrer">
+    <span class="ico"></span>
+    <span>公安备案 6cc0359398f5bdad51e9c38345584c16</span>
+  </a>
+</div>
 </body>
 </html>
