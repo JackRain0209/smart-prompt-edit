@@ -717,7 +717,7 @@ body{padding-bottom:38px}
             <button class="iconbtn">⋮</button>
           </div>
         </div>
-        <div class="pp-video"><video id="ppVideo" src="" muted loop autoplay playsinline style="width:100%;max-height:430px;border-radius:10px;object-fit:cover;background:#000"></video></div>
+        <div class="pp-video"><video id="ppVideo" src="" muted loop autoplay playsinline preload="auto" webkit-playsinline x5-playsinline x5-video-player-type="h5" x5-video-player-fullscreen="false" style="width:100%;max-height:430px;border-radius:10px;object-fit:cover;background:#000"></video></div>
         <div class="pp-bottom">
           <div class="prompt-card">
             <h4>Prompt</h4>
@@ -815,7 +815,7 @@ body{padding-bottom:38px}
             <button class="iconbtn">⋮</button>
           </div>
         </div>
-        <div class="p-video"><img id="resultImg" src="assets/result_video.jpg?v=3" alt="" style="display:none"><video id="resultVideo" muted loop autoplay playsinline style="max-height:420px;width:100%;border-radius:12px;object-fit:cover;background:#000"></video></div>
+        <div class="p-video"><img id="resultImg" src="assets/result_video.jpg?v=3" alt="" style="display:none"><video id="resultVideo" muted loop autoplay playsinline preload="auto" webkit-playsinline x5-playsinline x5-video-player-type="h5" x5-video-player-fullscreen="false" style="max-height:420px;width:100%;border-radius:12px;object-fit:cover;background:#000"></video></div>
         <div class="p-actions">
           <button class="remake-btn" onclick="go('quickedit')">Remake</button>
           <div class="share-t">Share to</div>
@@ -1157,9 +1157,10 @@ function renderExplore(){
   if(!g || !DEMO.scenarios) return;
   g.innerHTML = DEMO.scenarios.map(function(sc, i){
     return '<div class="ex-item" onclick="openScenario('+i+')">'
-      + '<video src="'+sc.videoOrig+'" muted loop playsinline autoplay style="width:100%;display:block;object-fit:cover"></video>'
+      + '<video src="'+sc.videoOrig+'" muted loop playsinline autoplay preload="auto" webkit-playsinline x5-playsinline x5-video-player-type="h5" x5-video-player-fullscreen="false" style="width:100%;display:block;object-fit:cover"></video>'
       + '<span>TRY THIS</span></div>';
   }).join('');
+  setTimeout(function(){ g.querySelectorAll('video').forEach(primeVideo); }, 60);
 }
 
 /* ---------- Prompt 详情 ---------- */
@@ -1168,7 +1169,8 @@ function openScenario(i, silent){
   var h0 = document.getElementById('presetHint'); if(h0) h0.textContent = '—';
   var sc = DEMO.scenarios[i];
   if(!sc) return;
-  var v = document.getElementById('ppVideo'); if(v) v.src = sc.videoOrig;
+  var v = document.getElementById('ppVideo');
+  if(v){ if(v.getAttribute('src') !== sc.videoOrig){ v.src = sc.videoOrig; v.load(); } primeVideo(v); }
   var a = document.getElementById('ppAuthor'); if(a) a.textContent = (sc.author||'creator') + ' ›';
   var p = document.getElementById('ppPrompt'); if(p) p.textContent = sc.prompt;
   renderQuickEdit();
@@ -1359,11 +1361,45 @@ function _playResult(){
   var sc = DEMO.scenarios[CUR.idx];
   var edited = Object.keys(CUR.edits).length > 0;
   var v = document.getElementById('resultVideo');
-  if(v){ v.src = edited ? sc.videoMod : sc.videoOrig; v.play(); }
   var img = document.getElementById('resultImg');
   if(img) img.style.display = 'none';
   go('player');
+  if(v){
+    if(v.parentNode) v.parentNode.style.display = '';
+    if(v.getAttribute('src') !== (edited ? sc.videoMod : sc.videoOrig)){
+      v.src = edited ? sc.videoMod : sc.videoOrig;
+      v.load();
+    }
+    primeVideo(v);
+    var p = v.play(); if(p && p.catch) p.catch(function(){});
+  }
 }
+
+/* ================= 移动端自动播放保障 ================= */
+function primeVideo(v){
+  if(!v) return;
+  v.muted = true; v.defaultMuted = true;
+  v.setAttribute('muted','');
+  v.setAttribute('playsinline',''); v.setAttribute('webkit-playsinline','');
+  v.setAttribute('x5-playsinline',''); v.setAttribute('x5-video-player-type','h5');
+  v.setAttribute('x5-video-player-fullscreen','false');
+  var tryPlay = function(){
+    var p = v.play();
+    if(p && p.catch){ p.catch(function(){ /* 被拦截时等用户第一次触摸再播 */ }); }
+  };
+  if(v.readyState >= 2) tryPlay();
+  else v.addEventListener('canplay', tryPlay, { once:true });
+  return v;
+}
+
+/* 用户任何一次点击/触摸，把当前页面上暂停的视频全部唤醒 */
+['click','touchstart'].forEach(function(ev){
+  document.addEventListener(ev, function(){
+    document.querySelectorAll('video').forEach(function(v){
+      if(v.paused && v.offsetParent !== null) primeVideo(v);
+    });
+  }, { passive:true });
+});
 
 /* ================= 启动 ================= */
 (function(){
