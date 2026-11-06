@@ -431,6 +431,16 @@ body{padding-bottom:38px}
 .note .k{color:var(--green);font-weight:600}
 .note ol{margin:8px 0 0 16px}
 .note li{margin-bottom:5px}
+
+/* 手机端：全屏 H5，去掉手机外框 */
+@media (max-width:700px){
+  html,body{height:100%}
+  body{padding:0;margin:0;overflow:hidden;background:#000}
+  .stage{display:block;width:100%}
+  .note{display:none}
+  .device{width:100vw;height:100vh;height:100dvh;border-radius:0;box-shadow:none}
+  .notch{display:none}
+}
 </style>
 </head>
 <body>
